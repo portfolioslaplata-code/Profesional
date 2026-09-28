@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" fill="none"><defs><pattern id="g" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M36 0H0V36" stroke="#b9c5a9" stroke-width=".5"/></pattern><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="m0 0 10 5-10 5z" fill="#ad4327"/></marker></defs><path fill="#dce4cd" d="M0 0h960v720H0z"/><path fill="url(#g)" d="M0 0h960v720H0z"/>
+<g transform="translate(100 145)"><path d="M0 0h760v430H0z" stroke="#80906e" stroke-width="2"/><path d="M16 16h728v398H16z" stroke="#a8b697"/>
+<path d="M75 75h125v100H75zm0 210h125v75H75zm255-210h190v100H330zm0 210h190v75H330zm330-210h55v100h-55zm0 210h55v75h-55z" fill="#c1ceae" stroke="#7d8e6b"/>
+<g fill="#eaf0df" stroke="#879974"><path d="M85 85h38v80H85zm50 0h55v35h-55zm0 45h55v35h-55zM340 85h55v80h-55zm68 0h100v35H408zm0 45h100v35H408zM85 295h105v55H85zm255 0h75v55h-75zm90 0h78v55h-78z"/></g>
+<path d="M-30 229h675V127" stroke="#ad4327" stroke-width="4" marker-end="url(#a)"/><path d="M277 229V126h44m-44 103v94h44m-72-94V125h-40m40 104v94h-40m436-94v94h10" stroke="#ad4327" stroke-width="3" marker-end="url(#a)"/>
+<circle cx="277" cy="229" r="8" fill="#ad4327"/><circle cx="645" cy="229" r="8" fill="#ad4327"/>
+<g font-family="sans-serif" font-size="12" fill="#4d5d41" letter-spacing="2"><text x="74" y="57">01 / INGRESO</text><text x="330" y="57">02 / PRODUCCIÓN</text><text x="574" y="390">03 / DESPACHO</text><text x="75" y="390">FLUJO CONTINUO →</text></g></g>
+<text x="100" y="641" font-family="sans-serif" font-size="11" fill="#55634a" letter-spacing="3">PLANTA 01 — REDISEÑO OPERATIVO</text><path d="M776 618h83m-83-6v12m83-12v12" stroke="#6c7d5b"/></svg>

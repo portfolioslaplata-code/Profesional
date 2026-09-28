@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 620" fill="none">
+<defs><pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse" patternTransform="matrix(1 .5 -1 .5 360 150)"><path d="M36 0H0V36" stroke="#d6d8ca" stroke-width=".65"/></pattern><filter id="shadow"><feGaussianBlur stdDeviation="12"/></filter></defs>
+<path fill="url(#grid)" d="M35 100h650v470H35z"/>
+<ellipse cx="375" cy="480" rx="230" ry="45" fill="#69725f" opacity=".12" filter="url(#shadow)"/>
+<path d="m100 364 245-127 275 147-242 127z" fill="#e4e6d9" stroke="#88937c"/>
+<path d="M100 364v13l278 148v-14z" fill="#b2bda4"/><path d="m378 511 242-127v13L378 525z" fill="#c3cdb5"/>
+<path d="m175 339 132-71 152 82-129 71z" fill="#d3ddc4" stroke="#70826c"/>
+<path d="M175 339v-93l155 83v92z" fill="#899b80" stroke="#66755f"/><path d="m330 329 129-70v91l-129 71z" fill="#b4c2a5" stroke="#66755f"/>
+<path d="m175 246 133-71 151 84-129 70z" fill="#dce4cd" stroke="#66755f"/>
+<path d="m195 244 113-60 129 70-109 60z" fill="#ced9bb" stroke="#8b9d7e"/>
+<path d="m231 225 132 72m-96-91 132 71m-96-90 132 71" stroke="#a3b493"/>
+<path d="m194 271 24 13v29l-24-13zm36 19 24 13v29l-24-13zm36 20 24 13v29l-24-13z" fill="#dce4cd" stroke="#66755f"/>
+<path d="m355 331 30-16v72l-30 16zm48-26 30-16v72l-30 16z" fill="#758b6d" stroke="#66755f"/>
+<path d="m357 344 26-14m-26 25 26-14m-26 25 26-14m-26 25 26-14m22-46 26-14m-26 25 26-14m-26 25 26-14m-26 25 26-14" stroke="#a0b095"/>
+<path d="m427 394 56-30 66 36-56 31z" fill="#e7e3d0" stroke="#8c917f"/><path d="M427 394v-55l66 36v56z" fill="#c5bba0" stroke="#8c917f"/><path d="m493 375 56-30v55l-56 31z" fill="#d6ccb4" stroke="#8c917f"/><path d="m427 339 56-30 66 36-56 30z" fill="#eee9d8" stroke="#8c917f"/>
+<path d="m455 324 66 36m-61-3v20m13-13v20" stroke="#a69e89"/>
+<path d="m253 414 38-20 38 21-38 21z" fill="#b86d4f" stroke="#9a5038"/><path d="M253 414v-29l38 20v31z" fill="#ba7656" stroke="#9a5038"/><path d="m291 405 38-20v30l-38 21z" fill="#d2936e" stroke="#9a5038"/><path d="m253 385 38-20 38 20-38 20z" fill="#dbad88" stroke="#9a5038"/>
+<path d="m345 440 41-22 42 23-42 23z" fill="#b86d4f" stroke="#9a5038"/><path d="M345 440v-33l41 22v35z" fill="#ba7656" stroke="#9a5038"/><path d="m386 429 42-22v34l-42 23z" fill="#d2936e" stroke="#9a5038"/><path d="m345 407 41-22 42 22-42 22z" fill="#dbad88" stroke="#9a5038"/>
+<path d="m153 388 62 34 50-27m54 55 32 18 99-52m86-57 40-21-77-43" stroke="#ad4327" stroke-width="2" stroke-dasharray="5 5"/>
+<circle cx="152" cy="387" r="5" fill="#ad4327"/><circle cx="450" cy="416" r="5" fill="#ad4327"/>
+<path d="M307 174v-53h130M150 323H84v-93m465 139h64v-65" stroke="#86947e" stroke-width=".8"/>
+<circle cx="307" cy="174" r="3" fill="#64755d"/><circle cx="150" cy="323" r="3" fill="#64755d"/><circle cx="549" cy="369" r="3" fill="#64755d"/>
+<g font-family="sans-serif" fill="#54624c" font-size="10" letter-spacing="1.8"><text x="315" y="113">PROCESOS</text><text x="55" y="217">PERSONAS</text><text x="576" y="290">DATOS</text></g>
+<path d="M98 100h18m-9-9v18m464 70h18m-9-9v18M76 449h18m-9-9v18" stroke="#909b83"/>
+</svg>

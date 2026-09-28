@@ -1,0 +1,235 @@
+.hero {
+  padding-top: 29px;
+}
+.hero-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  line-height: 1.7;
+}
+.hero-topline > .eyebrow {
+  color: var(--muted);
+}
+.availability {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11px;
+  line-height: 1.6;
+}
+.availability i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--secondary);
+  flex-shrink: 0;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.14fr 1fr;
+  gap: 74px;
+  align-items: center;
+  padding: 61px 0 48px;
+}
+.profession {
+  color: var(--primary);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  font-weight: 650;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+}
+h1 {
+  font-size: clamp(48px, 5.65vw, 78px);
+  line-height: 1.12;
+  letter-spacing: -4px;
+  font-weight: 550;
+}
+.hero-statement {
+  font-family: var(--font-heading);
+  font-size: clamp(25px, 2.7vw, 37px);
+  line-height: 1.32;
+  letter-spacing: -1.35px;
+  margin-top: 26px;
+  font-weight: 430;
+}
+.hero-statement span {
+  color: var(--primary);
+}
+.hero-description {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.85;
+  max-width: 420px;
+  margin-top: 24px;
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 27px;
+  margin-top: 29px;
+}
+.button {
+  min-height: 48px;
+  padding: 15px 21px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  font-size: 12px;
+  font-weight: 500;
+  transition:
+    background 180ms,
+    transform 180ms;
+}
+.button-primary {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+.button-primary:hover {
+  background: color-mix(in srgb, var(--primary), var(--text) 15%);
+  transform: translateY(-2px);
+}
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 550;
+  min-height: 44px;
+}
+.text-link:hover {
+  color: var(--primary);
+}
+.location {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 27px;
+}
+.hero-visual {
+  background: var(--surface);
+  aspect-ratio: 1 / 1.075;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.visual-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px 27px 0;
+  font-size: 9px;
+  letter-spacing: 1.4px;
+  z-index: 1;
+}
+.hero-image {
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  object-fit: contain;
+}
+.has-portrait .hero-image {
+  object-fit: cover;
+}
+.hero-visual figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 27px 26px;
+  padding-top: 17px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  gap: 16px;
+}
+.visual-coordinate {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+.visual-stamp {
+  position: absolute;
+  width: 77px;
+  height: 77px;
+  background: var(--accent);
+  bottom: 83px;
+  right: -19px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  transform: rotate(-14deg);
+  color: var(--secondary);
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: -2px;
+}
+.visual-stamp span:last-child {
+  font-size: 26px;
+}
+.hero-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 17px 0;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--muted);
+}
+.hero-bottom a {
+  min-width: 44px;
+  min-height: 44px;
+  display: grid;
+  place-items: center;
+  color: var(--text);
+}
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 35px 0 43px;
+  border-bottom: 1px solid var(--border);
+}
+.highlight {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 28px;
+  border-left: 1px solid var(--border);
+  gap: 6px;
+}
+.highlight:first-child {
+  border: 0;
+  padding-left: 0;
+}
+.highlight strong {
+  font-family: var(--font-heading);
+  font-size: 41px;
+  letter-spacing: -2px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.highlight span {
+  color: var(--muted);
+  font-size: 11px;
+}
