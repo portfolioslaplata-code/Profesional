@@ -32,6 +32,7 @@ export function renderHead(data) {
         image: absoluteUrl(data.photo.src, seo.siteUrl),
       }),
     sameAs: asArray(data.socials)
+      .filter((link) => !link.demo)
       .map((link) => absoluteUrl(link.url))
       .filter(Boolean),
   }

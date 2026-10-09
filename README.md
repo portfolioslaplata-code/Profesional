@@ -1,8 +1,33 @@
-# Profesional · Portfolios La Plata
+# Profundidad · Portfolios La Plata
 
-Base comercial reutilizable de portfolio **one-page**, con una demo ficticia de ingeniería industrial. Datos, colores, tipografías y secciones configurables sin reescribir componentes. Casos ampliables, trayectoria, métricas, recomendaciones y HTML prerenderizado diferencian este producto de Esencial.
+Demo reutilizable de portfolio **one-page**, con un perfil ficticio de ingeniería industrial. Datos, colores, tipografías y secciones configurables sin reescribir componentes. Incluye casos ampliables, trayectoria, logros, testimonios y HTML prerenderizado, con su propia identidad visual.
 
-No incluye backend, CMS, autenticación, blog ni envío de formularios. Los límites comerciales siguen `../producto-docs/catalogo.md`.
+Profundidad es una referencia de diseño e implementación, no un plan ni un nivel de precio. La Landing define el catálogo, los precios y la oferta vigente: **Portfolio Base + secciones estándar + secciones avanzadas + complementos + desarrollo a medida**. `Profesional` se conserva como identificador técnico histórico. No incluye backend, CMS, autenticación, blog ni envío de formularios.
+
+## Composición del catálogo
+
+`src/data/portfolio.js → catalogComposition` declara Base (`navigation`, `hero`, `contact`, `footer`), ocho bloques comerciales y un complemento. Cada sección tiene `id` interno, `type`, `catalogIds` oficiales y `label`. En el orden visual actual:
+
+| Bloque interno | Clasificación              | ID del catálogo |
+| -------------- | -------------------------- | --------------- |
+| `highlights`   | Estándar · Logros          | `achievements`  |
+| `projects`     | Avanzada · Mini case study | `case-study`    |
+| `about`        | Estándar · Sobre mí        | `about`         |
+| `experience`   | Estándar · Experiencia     | `experience`    |
+| `education`    | Estándar · Formación       | `education`     |
+| `services`     | Estándar · Servicios       | `services`      |
+| `skills`       | Estándar · Habilidades     | `skills`        |
+| `testimonials` | Avanzada · Testimonios     | `testimonials`  |
+
+Total activo: **6 estándar + 2 avanzadas + 1 complemento**, CV descargable (`cv` → `download-cv`). Base y CV no suman secciones. No se incluyen precios ni límites comerciales en esta metadata.
+
+`getActiveCatalogSections(data)` en `src/utils/portfolio.js` cruza la declaración con `visibleSections`, siguiendo el orden real de `settings.sectionOrder`, sin duplicados. Devuelve los bloques con contenido visible y sus `activeCatalogIds`, sin mutar la declaración. Los IDs del catálogo pueden diferir del ID interno: `projects` representa `case-study` y `highlights` representa `achievements`.
+
+Los tres proyectos y sus dos casos expandibles forman **un solo Mini case study**, sin sumar Proyectos estándar. Métricas, galerías y otros elementos integrados tampoco suman bloques. Experiencia y Formación son independientes; una línea temporal visual no convierte Experiencia en avanzada. Las cuatro cifras de Logros cuentan como un bloque estándar, no como Métricas/resultados avanzada. Los dos testimonios cuentan como una avanzada y mantienen sus etiquetas ficticias.
+
+`getActiveCatalogComplements(data)` reutiliza `getCv`, la misma regla de los enlaces del Hero y menú. El CV solo cuenta si está habilitado y tiene URL válida; el build comprueba que el recurso local exista y falla si falta. La disponibilidad de `/cv-demo.pdf` se verifica también mediante las pruebas de archivo y descarga. Para desactivarlo, usar `cv: null` o `cv.enabled: false`; no altera las ocho secciones ni elimina su declaración como complemento soportado.
+
+La numeración visual existente se recalcula desde los bloques visibles: omite la franja Logros e incluye Contacto. No debe utilizarse como conteo comercial.
 
 ## Iniciar
 
@@ -62,7 +87,7 @@ tests/                       Pruebas de configuración y navegador
 
 El núcleo conserva `firstName`, `lastName`, `monogram`, `profession`, `location`, `email`, `phone`, `photo`, `cv`, `socials`, `projects.items`, `services.items`, `journey`, `experience`, `education`, `skills.groups`, `contact` y `ui` del contrato compartido. No se introdujo un objeto `personal` incompatible.
 
-Extensiones opcionales de Profesional: `highlights`, `testimonials`, `professional.caseStudies`, tokens en `theme`, orden en `settings.sectionOrder`. El esquema de casos de los documentos compartidos era una propuesta: aquí se relacionan mediante `projectId` con el proyecto, evitando duplicar rol, cliente y herramientas. Los IDs deben ser únicos y estables.
+Extensiones opcionales de Profundidad: `highlights`, `testimonials`, `professional.caseStudies`, tokens en `theme`, orden en `settings.sectionOrder`. El esquema de casos de los documentos compartidos era una propuesta: aquí se relacionan mediante `projectId` con el proyecto, evitando duplicar rol, cliente y herramientas. Los IDs deben ser únicos y estables; `professional` es una clave técnica histórica.
 
 ### Secciones y navegación
 
@@ -75,7 +100,7 @@ settings: {
 }
 ```
 
-Una sección se muestra cuando no está deshabilitada **y** tiene contenido útil. Arrays vacíos y grupos de skills sin ítems desaparecen. `about` requiere texto, filosofía o datos; `contact` requiere al menos un medio válido. Las secciones omitidas del orden se agregan al final en su orden por defecto: para ocultar una, usar `sections.nombre: false`. Hero y footer permanecen como estructura del perfil.
+Una sección se muestra cuando no está deshabilitada **y** tiene contenido útil. Arrays vacíos y grupos de skills sin ítems desaparecen. `about` requiere texto, filosofía o datos; `contact` requiere un canal válido o un dato marcado como muestra. `sectionItems` permite ocultar un elemento con `enabled: false` (proyectos, testimonios, logros, experiencia, formación o servicios); si no queda contenido útil, se oculta el bloque completo. Las secciones omitidas del orden se agregan al final en su orden por defecto: para ocultar una, usar `sections.nombre: false`. Hero y footer permanecen como estructura del perfil.
 
 La navegación y todos los CTA internos se filtran con las mismas reglas. No se generan enlaces a proyectos o contacto ocultos. `navigation` permite limitar los accesos visibles sin ocultar esas secciones del cuerpo. Experiencia y formación son bloques independientes que comparten el lenguaje visual de trayectoria. Si se desactiva experiencia, formación sigue teniendo su propio título.
 
@@ -134,7 +159,7 @@ testimonials: [{ id: 'recomendacion-1', name: 'Nombre', role: 'Cargo',
   photo: null, url: '', demo: false }]
 ```
 
-No hay carrusel automático. Los testimonios demo llevan `demo: true` y una etiqueta visible. Para un cliente, reemplazar texto y autor por recomendaciones autorizadas y poner `demo: false`; quitar la sección si no hay material. Métricas y resultados deben poder justificarse antes de publicar.
+No hay carrusel automático. Los testimonios demo llevan `demo: true`, una etiqueta visible y no generan enlaces de autor aunque se configure una URL. Para un cliente, reemplazar texto y autor por recomendaciones autorizadas y poner `demo: false`; quitar la sección si no hay material. Métricas y resultados deben poder justificarse antes de publicar.
 
 ### CV
 
@@ -159,7 +184,9 @@ También genera el PNG Open Graph y una vista previa del CV en `tmp/pdfs/`. Revi
 
 `email` genera `mailto:` y `phone` con código de país genera `wa.me` (se eliminan separadores). `socials` y `externalLinks` aceptan `{ label, url }`. Los enlaces externos abren otra pestaña con `noopener noreferrer`.
 
-La demo usa `example.com`, reservado para ejemplos, y LinkedIn sin URL: se muestra como referencia **no clickeable**. Reemplazarlo por el enlace real al personalizar. No hay formularios que simulen envíos.
+`getContactItems` reúne correo, WhatsApp, redes y enlaces externos. `contact.emailIsDemo: true`, `contact.phoneIsDemo: true` o `demo: true` en una red/enlace conservan la muestra como texto con `url: null`. `contactLinks` devuelve únicamente canales accionables. La demo marca su correo y LinkedIn como ficticios; no generan enlaces, foco ni falsas acciones. Los canales reales válidos conservan su funcionamiento junto a los de muestra. Las redes demo se excluyen también de `sameAs` en JSON-LD.
+
+Al personalizar, reemplazar el contenido por datos verificados y desactivar las marcas correspondientes. Quitar `settings.demoNotice` no activa ningún contacto. Sin datos visibles de contacto, se ocultan el bloque y sus anclas. No hay formularios que simulen envíos.
 
 ### SEO y dominio
 
@@ -203,7 +230,7 @@ npm run test:browser
 
 Las pruebas levantan preview en 4173 y Vite en 5173. Usan Edge instalado por defecto (Windows). Para Chrome, definir `PLAYWRIGHT_CHANNEL=chrome`; para CI sin navegador, instalar Chromium con Playwright y ajustar `channel` en `playwright.config.js`. No se requiere un navegador para lint o build.
 
-Se comprueban anchos 320, 375, 430, 768, 1366 y 1920, expansión de casos, navegación con teclado, Escape en el menú, descarga real del CV, reduced motion, WCAG AA mediante axe y ausencia de solicitudes externas. Las variantes se inyectan en memoria: nombre/profesión largos, sin CV, sin foto, imágenes fallidas, cero/uno/seis proyectos, sin casos, secciones vacías o deshabilitadas y orden alternativo. No se modifica el archivo de datos para hacer las pruebas. Capturas en `tmp/qa-*.png`.
+Se comprueban anchos 320, 375, 430, 768, 1366, 1440 y 1920, expansión de casos, navegación con teclado, Escape en el menú, descarga real del CV, reduced motion, WCAG AA mediante axe y ausencia de solicitudes externas. Las variantes se inyectan en memoria: nombre/profesión largos, sin CV, sin foto, imágenes fallidas, cero/uno/seis proyectos, sin casos, secciones vacías o deshabilitadas y orden alternativo. También se verifica composición comercial, numeración, Experiencia/Formación independientes, proyectos/testimonios ocultos, contactos demo frente a canales reales y SEO Profundidad. No se modifica el archivo de datos para hacer las pruebas. Capturas en `tmp/qa-*.png`.
 
 ## Publicación
 

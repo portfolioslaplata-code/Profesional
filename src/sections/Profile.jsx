@@ -184,7 +184,7 @@ export function Testimonials({ data, number }) {
                 <strong>{item.name}</strong>
                 <p>{[item.role, item.institution].filter(Boolean).join(' · ')}</p>
                 {item.demo && <span className="demo-label">{data.ui.demoTestimonial}</span>}
-                <Link href={item.url} className="text-link">
+                <Link href={item.demo ? null : item.url} className="text-link">
                   {item.name}
                   <ArrowUpRight size={14} aria-hidden="true" />
                 </Link>

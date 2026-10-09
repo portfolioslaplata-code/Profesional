@@ -85,7 +85,7 @@ for y in range(60, 610, 48):
     draw.line((850, y, 1190, y), fill=palette['border'])
 for x in range(850, 1200, 48):
     draw.line((x, 40, x, 590), fill=palette['border'])
-draw.text((70, 60), 'PORTFOLIO PROFESIONAL / DEMO', font=font(18), fill=palette['muted'])
+draw.text((70, 60), data['seo']['openGraph']['imageLabel'], font=font(18), fill=palette['muted'])
 draw.text((70, 164), full_name, font=font(75, True), fill=palette['text'])
 draw.text((74, 264), data['profession'], font=font(28), fill=palette['primary'])
 draw.text((70, 350), data['hero']['title'], font=font(42), fill=palette['text'])

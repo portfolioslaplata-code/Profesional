@@ -16,8 +16,24 @@ export const portfolio = {
     label: 'Descargar CV',
     fileName: 'Sofia-Ferrer-CV-demo.pdf',
   },
-  socials: [{ label: 'LinkedIn', url: '', note: 'Perfil de demostración' }],
+  socials: [{ label: 'LinkedIn', url: '', demo: true, note: 'Perfil de demostración' }],
   externalLinks: [],
+  // Equivalencias con la Landing en el orden visual de esta demo, sin precios.
+  // La composición activa se deriva de visibleSections y getCv.
+  catalogComposition: {
+    base: ['navigation', 'hero', 'contact', 'footer'],
+    sections: [
+      { id: 'highlights', type: 'standard', catalogIds: ['achievements'], label: 'Logros' },
+      { id: 'projects', type: 'advanced', catalogIds: ['case-study'], label: 'Mini case study' },
+      { id: 'about', type: 'standard', catalogIds: ['about'], label: 'Sobre mí' },
+      { id: 'experience', type: 'standard', catalogIds: ['experience'], label: 'Experiencia' },
+      { id: 'education', type: 'standard', catalogIds: ['education'], label: 'Formación' },
+      { id: 'services', type: 'standard', catalogIds: ['services'], label: 'Servicios' },
+      { id: 'skills', type: 'standard', catalogIds: ['skills'], label: 'Habilidades' },
+      { id: 'testimonials', type: 'advanced', catalogIds: ['testimonials'], label: 'Testimonios' },
+    ],
+    complements: [{ id: 'cv', catalogIds: ['download-cv'], label: 'CV descargable' }],
+  },
   settings: {
     sections: {
       about: true,
@@ -62,18 +78,20 @@ export const portfolio = {
     fonts: { heading: 'Manrope Variable, sans-serif', body: 'DM Sans Variable, sans-serif' },
   },
   seo: {
-    title: 'Sofía Ferrer · Ingeniería de procesos | Demo Profesional',
+    title: 'Sofía Ferrer · Ingeniería de procesos | Demo Profundidad',
     description:
-      'Portfolio ficticio de una ingeniera industrial: procesos más simples, operaciones eficientes y mejora continua. Demo de Portfolios La Plata.',
+      'Profundidad, demo de Portfolios La Plata. Portfolio ficticio de ingeniería industrial con proyectos, trayectoria y casos de mejora continua.',
     siteUrl: '',
     canonical: '',
     favicon: '/favicon.svg',
     robots: 'noindex, nofollow', // Cambiar a index, follow al publicar un cliente real.
     openGraph: {
-      title: 'Sofía Ferrer · Hacer que las cosas funcionen mejor.',
-      description: 'Procesos, operaciones y mejora continua. Perfil ficticio de demostración.',
+      title: 'Sofía Ferrer | Demo Profundidad · Portfolios La Plata',
+      description:
+        'Profundidad: procesos, operaciones y mejora continua en un portfolio ficticio de demostración.',
       image: '/images/og-cover.png',
-      imageAlt: 'Portfolio de muestra de Sofía Ferrer, ingeniera industrial.',
+      imageAlt: 'Profundidad, portfolio de muestra de Sofía Ferrer, ingeniera industrial.',
+      imageLabel: 'PORTFOLIO PROFUNDIDAD / DEMO',
     },
     twitter: { enabled: true, card: 'summary_large_image', handle: '' },
   },
@@ -330,6 +348,8 @@ export const portfolio = {
     },
   ],
   contact: {
+    emailIsDemo: true,
+    demoEmailLabel: 'Correo de muestra',
     eyebrow: 'El próximo paso',
     title: '¿Hay algo que podemos mejorar juntos?',
     description:

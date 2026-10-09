@@ -18,7 +18,7 @@ async function checkLayout(page) {
   expect(orphanLinks).toEqual([])
 }
 
-for (const width of [320, 375, 430, 768, 1366, 1920]) {
+for (const width of [320, 375, 430, 768, 1366, 1440, 1920]) {
   test(`demo responsive ${width}px, sin overflow ni enlaces huérfanos`, async ({ page }) => {
     const errors = []
     page.on('pageerror', (error) => errors.push(error.message))
@@ -64,6 +64,7 @@ test('teclado, menú móvil, descarga del CV y movimiento reducido', async ({ pa
     page.getByRole('link', { name: portfolio.cv.label, exact: true }).first().click(),
   ])
   expect(download.suggestedFilename()).toBe(portfolio.cv.fileName)
+  expect(await download.failure()).toBeNull()
   expect(await page.locator('html').evaluate((el) => getComputedStyle(el).scrollBehavior)).toBe(
     'auto',
   )

@@ -1,5 +1,5 @@
-import { ArrowUpRight, MapPin } from 'lucide-react'
-import { asArray, contactLinks, safeHref } from '../utils/portfolio.js'
+import { ArrowUpRight, Mail, MapPin } from 'lucide-react'
+import { getContactItems } from '../utils/portfolio.js'
 import { Link } from '../components/Primitives.jsx'
 
 export default function Contact({ data, number }) {
@@ -23,27 +23,38 @@ export default function Contact({ data, number }) {
             )}
           </div>
           <div className="contact-links">
-            {contactLinks(data).map((link) => (
-              <Link
-                key={link.url}
-                href={link.url}
-                className={`contact-link ${link.kind === 'email' ? 'email-link' : ''}`}
-              >
-                <span>
-                  {link.kind === 'email' && <small>{contact.emailLabel}</small>}
-                  {link.label}
-                </span>
-                <ArrowUpRight size={24} aria-hidden="true" />
-              </Link>
-            ))}
-            {asArray(data.socials)
-              .filter((link) => !safeHref(link.url) && link.label)
-              .map((link) => (
-                <div key={link.label} className="contact-link inactive-link">
+            {getContactItems(data).map((link) =>
+              link.url ? (
+                <Link
+                  key={link.url}
+                  href={link.url}
+                  className={`contact-link ${link.kind === 'email' ? 'email-link' : ''}`}
+                >
+                  <span>
+                    {link.kind === 'email' && <small>{contact.emailLabel}</small>}
+                    {link.label}
+                  </span>
+                  <ArrowUpRight size={24} aria-hidden="true" />
+                </Link>
+              ) : link.kind === 'email' ? (
+                <div
+                  key={link.label}
+                  className="contact-link email-link"
+                  title={contact.demoMessage}
+                >
+                  <span>
+                    <small>{contact.demoEmailLabel || data.ui.demoLink}</small>
+                    {link.label}
+                  </span>
+                  <Mail size={24} aria-hidden="true" />
+                </div>
+              ) : (
+                <div key={link.label} className="contact-link inactive-link" title={link.note}>
                   <span>{link.label}</span>
                   <small>{data.ui.demoLink}</small>
                 </div>
-              ))}
+              ),
+            )}
             {data.location && (
               <p className="location">
                 <MapPin size={15} aria-hidden="true" />
